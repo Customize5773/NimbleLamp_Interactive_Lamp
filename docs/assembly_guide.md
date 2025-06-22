@@ -13,6 +13,7 @@
 ## Assembly Steps
 
 ### 1. Electronics Preparation
+
 ```mermaid
 graph TD
 A[Install TMC209 in CNC Shield] --> B[Solder cable motor ke NEMA17]
@@ -46,6 +47,7 @@ C --> D[Connect the button to GPIO2]
 3. Install the copper touch pad on the casing.
 
 ### 6. Initial Testing
+
 ```ino
 // Simple test code
 void setup() {
