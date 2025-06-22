@@ -10,66 +10,57 @@
 7. Mode Button
 8. 3D Casing (Base, Arm, Lamp Housing)
 
-
 ## Assembly Steps
 
-
-### Electronics Preparation
+### 1. Electronics Preparation
 ```mermaid
-TD graph
-A[Install TMC2209 in CNC Shield] --> B[Solder motor cable to NEMA17]
+graph TD
+A[Install TMC209 in CNC Shield] --> B[Solder cable motor ke NEMA17]
 B --> C[Connect VL53L0X to I²C]
-C --> D[Connect button to GPIO2]
+C --> D[Connect the button to GPIO2]
 ```
 
-
-### Power Supply
+### 2. Power Supply
 - 12V input → Buck Converter
 - 5V output → ESP32 and TMC2209
 - VMOT 12V → TMC2209
 - Add a parallel 100µF capacitor at VMOT
 
-
-### Mechanical Mounting
-1. Fasten NEMA17 to the base plate
+### 3. Mechanical Mounting
+1. Fasten the NEMA17 to the base plate
 2. Attach the GT2 pulley to the motor shaft
 3. Attach the linear rail to the base
 4. Connect the carriage to the GT2 belt
 
-
-### Final Wiring
-| Components | Target Pin
+### 4. Wiring Final
+| Component | Target Pin |
 |----------|------------|
-| TMC STEP | GPIO14 |
-| TMC DIR | GPIO27 |
-| VL53L0X | GPIO21/22 |
-| LED Strip| GPIO5
+| TMC STEP | GPIO14     |
+| TMC DIR  | GPIO27     |
+| VL53L0X  | GPIO21/22  |
+| LED Strip| GPIO5      |
 
+### 5. Sensor & Light Installation
+1. Attach the VL53L0X to the front of the light housing.
+2. Attach the LED strip inside the diffuser.
+3. Install the copper touch pad on the casing.
 
-### Sensor & Light Installation
-1. Glue the VL53L0X in front of the lamp housing
-2. Stick the LED strip inside the diffuser
-3. Install the copper touch pad in the case
-
-
-### Initial Testing
+### 6. Initial Testing
 ```ino
 // Simple test code
 void setup() {
-Serial.begin(115200);
-pinMode(2, INPUT_PULLUP);
-Serial.println("Button Test: Press button");
+  Serial.begin(115200);
+  pinMode(2, INPUT_PULLUP);
+  Serial.println("Button Test: Press button");
 }
-
 
 void loop() {
-if(digitalRead(2) == LOW) {
-Serial.println("Button working!");
-delay(300);
-}
+  if(digitalRead(2) == LOW) {
+    Serial.println("Button Works!");
+    delay(300);
+  }
 }
 ```
 
-
 ## Assembly Diagram
-Assembly Diagram(/images/assembly_layout.jpg)
+![Assembly Diagram](../images/assembly_layout.jpg)
