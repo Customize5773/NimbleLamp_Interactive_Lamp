@@ -1,57 +1,85 @@
-# Common Problem Solutions
+# Common Issues and Solutions
 
-## Motor Doesn't Move
+## 1. Motor Not Moving
 **Symptoms**:
-- Stepper vibrates but does not rotate
-- Buzzing sound from the driver
+- Stepper vibrates but doesn't rotate
+- Buzzing sound from driver
 
-**Fixes**:
-1. Check the motor connections:
-- Wiring sequence: A+, A-, B+, B-
-- Use multimeter for continuity
-2. Set the driver current:
-  
-```cpp
-driver.rms_current(800); // In mA
-```
-3. Make sure the EN pin is active LOW
+**Solutions**:
+1. Check motor connections:
+   - Wire sequence: A+, A-, B+, B-
+   - Use multimeter for continuity test
+2. Adjust driver current:
+   ```cpp
+   driver.rms_current(800); // In mA
+   ```
+3. Ensure EN pin is set to LOW
 
-
-## VL53L0X Sensor Error
+## 2. VL53L0X Sensor Error
 **Symptoms**:
 - Distance reading = 0 or 8190
 - "Sensor timeout" message
 
+**Solutions**:
+1. Check I²C wiring:
+   - SDA → GPIO21
+   - SCL → GPIO22
+   - VCC → 5V
+2. Add 4.7kΩ pull-up resistors
+3. Change I²C address if needed:
+   ```cpp
+   distanceSensor.setAddress(0x30);
+   ```
 
-**Fix**:
-1. Check the I²C wiring:
-- SDA → GPIO21
-- SCL → GPIO22
-- VCC → 5V
-2. Add a 4.7kΩ pull-up resistor
-3. Change the I²C address if necessary:
-```cpp
-distanceSensor.setAddress(0x30);
-```
-
-## Unresponsive Touch Sensor
+## 3. Touch Sensor Unresponsive
 **Symptoms**:
-- Touch is not detected
-- False positive
-
+- Touches not detected
+- False positives
 
 **Calibration**:
-1. Read the baseline value:
-```ino
-Serial.println(touchRead(13));
-```
-2. Set the threshold in config.h:
-```cpp
-const uint16_t TOUCH_THRESHOLD = 25; // Lower for more sensitivity
-```
+1. Read baseline value:
+   ```arduino
+   Serial.println(touchRead(13));
+   ```
+2. Adjust threshold in config.h:
+   ```cpp
+   const uint16_t TOUCH_THRESHOLD = 25; // Lower for more sensitivity
+   ```
 
-## 4. ESP32 Restarts on Its Own
-**Symptom**:
-- MCU reset while motor is on
+## 4. ESP32 Random Restarts
+**Symptoms**:
+- MCU resets when motor activates
 - Random crashes
-- Motor vibration solution
+
+**Solutions**:
+1. Add 1000µF capacitor to buck converter input
+2. Separate motor and logic grounds
+3. Limit motor current:
+   ```cpp
+   driver.rms_current(700); // Reduce from default
+   ```
+
+## 5. LED Strip Flickering
+**Symptoms**:
+- Unstable LED lighting
+- Inconsistent colors
+
+**Solutions**:
+1. Add 330µF capacitor near LED strip
+2. Ensure proper ground connection
+3. Check MOSFET rating:
+   - Use IRLB8721 for >2A loads
+   - Add heatsink
+
+## 6. Mechanical Issues
+**Common Symptoms**:
+- Jerky movement
+- Noisy operation
+
+**Solutions**:
+1. Lubricate linear rail with grease
+2. Adjust GT2 belt tension
+3. Calibrate steps/mm:
+   ```cpp
+   const int32_t MOVE_DISTANCE = 250; // Adjust as needed
+   ```
