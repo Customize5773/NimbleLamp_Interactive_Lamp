@@ -75,4 +75,4 @@ flowchart TD
 
 ## Wiring
 
-![Wiring](image/Wiring.png)
+![Wiring](https://github.com/user-attachments/assets/a88b62b1-997f-49d0-9da5-b5811551ef9d)
