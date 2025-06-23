@@ -6,7 +6,7 @@
 
 ![Overview](image/Bookworm_Annoying_Personal_Lamp_(2).png)
 
-NimbleLamp Advance is an evolution of the original Bookworm Annoying Lamp concept, featuring significant hardware improvements and enhanced functionality. This ESP32-based system implements a stepper motor mechanism with silent drivers, precise time-of-flight sensing, and multiple control modes. The lamp intelligently responds to user presence while providing customizable interaction modes.
+NimbleLamp Advance is an evolution of the original Bookworm Annoying Lamp concept By RoAnWo in instructables, featuring significant hardware improvements and enhanced functionality. This ESP32-based system implements a stepper motor mechanism with silent drivers, precise time-of-flight sensing, and multiple control modes. The lamp intelligently responds to user presence while providing customizable interaction modes.
 
 ## Key Features
 - **Adaptive Movement System**: Uses TMC2209 silent stepper drivers for smooth, quiet operation
