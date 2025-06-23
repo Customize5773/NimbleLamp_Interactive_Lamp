@@ -111,3 +111,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Support
 For technical assistance, open an issue on GitHub or consult the [troubleshooting guide](docs/troubleshooting.md).
+
+---
+
+## Inspired by RoAnWo
+
+> [Bookworm - Annoying Personal Lamp](https://www.instructables.com/Bookworm-Annoying-Personal-Lamp/)
