@@ -29,9 +29,6 @@ graph LR
     ESP32 --> BUTTON[Mode Button]
     ESP32 --> TOUCH[Touch Sensor]
 ```
-## Wiring
-
-![Wiring](image/Wiring.png)
 
 ## Getting Started
 
