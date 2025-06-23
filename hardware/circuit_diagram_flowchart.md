@@ -72,3 +72,7 @@ flowchart TD
 - Use twisted pairs for stepper motor connections  
 - Maintain <5cm wire length for VL53L0X I²C lines  
 - MOSFET requires heatsink for >1A LED loads
+
+## Wiring
+
+![Wiring](image/Wiring.png)
